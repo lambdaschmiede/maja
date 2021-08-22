@@ -1,0 +1,13 @@
+/target
+/classes
+/checkouts
+/.lsp
+profiles.clj
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+/.prepl-port
+.DS_Store
