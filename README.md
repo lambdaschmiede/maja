@@ -1,3 +1,5 @@
+[![Clojars Project](https://img.shields.io/clojars/v/com.lambdaschmiede/maja.svg)](https://clojars.org/com.lambdaschmiede/maja)
+
 # Maja
 
 A small Clojure library to wrap the libhoney-java client used to transit events to Honeycomb.
