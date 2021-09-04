@@ -1,4 +1,4 @@
-(defproject com.lambdaschmiede/maja "0.1.0"
+(defproject com.lambdaschmiede/maja "0.1.1"
   :description "A library to integrate honeycomb.io with Clojure applications"
   :url "https://github.com/lambdaschmiede/maja"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"

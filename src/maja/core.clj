@@ -59,11 +59,11 @@
                span-id (last traces)
                parent-span-id (last (pop traces))]
 
-           (send-event (-> {"name" (fqfn function)
-                            "Timestamp" start
+           (send-event (-> {"Timestamp" start
+                            "duration_ms" duration
+                            "name" (fqfn function)
                             "trace.span_id" span-id
-                            "trace.trace_id" root-trace
-                            "duration_ms" duration}
+                            "trace.trace_id" root-trace}
                            (cond-> parent-span-id (assoc "trace.parent_id" parent-span-id)))
                        honey)
            result))))))
