@@ -12,14 +12,13 @@
             duration (- (now) start)
             span-id (last traces)]
 
-        (send-event {"Timestamp" start
-                     "duration_ms" duration
+        (send-event {"duration_ms" duration
                      "name" "honey-middleware"
                      "trace.span_id" span-id
                      "trace.trace_id" root-trace
                      "status" (:status response)
                      "method" (name (:request-method request))
-                     "path" (:uri request)
-                     }
+                     "path" (:uri request)}
+                    start
                     honey)
         response))))

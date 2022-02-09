@@ -24,18 +24,19 @@
 
 (defn send-event
   "Sends an event outside of any active trace"
-  [params honey]
+  [params timestamp honey]
   (when (some? honey)
     (-> (.createEvent honey)
         (.addFields params)
+        (.setTimestamp timestamp)
         (.send))))
 
 (defn send-in-trace
   "Sends a single event inside the active trace, e.g. an error event"
   [params honey]
   (send-event (merge {"trace.trace_id" root-trace
-                      "trace.parent_id" (last (pop traces))
-                      "Timestamp" (now)} params)
+                      "trace.parent_id" (last (pop traces))} params)
+              (now)
               honey))
 
 (defn- fqfn
@@ -59,12 +60,12 @@
                span-id (last traces)
                parent-span-id (last (pop traces))]
 
-           (send-event (-> {"Timestamp" start
-                            "duration_ms" duration
+           (send-event (-> {"duration_ms" duration
                             "name" (fqfn function)
                             "trace.span_id" span-id
                             "trace.trace_id" root-trace}
                            (cond-> parent-span-id (assoc "trace.parent_id" parent-span-id)))
+                       start
                        honey)
            result))))))
 
