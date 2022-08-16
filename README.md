@@ -28,9 +28,9 @@ The library contains a middleware which starts a trace for all incoming HTTP req
 (require '[maja.core :refer [initialize-honey]
           [maja.middleware :refer [wrap-honey-middleware]]])
 
-(def honey initialize-honey {:write-key "xxxxxxx"
+(def honey (init-honeycomb {:write-key "xxxxxxx"
                             :dataset "my-ds-name"
-                            :sample-rate 1})
+                            :sample-rate 1}))
 
 (defn wrap-honey-middleware [handler]
   (if (some? honey)
