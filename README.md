@@ -14,9 +14,9 @@ The following code creates a new instance of the Honeycomb Java Client:
 ``` clojure
 (require '[maja.core :refer [initialize-honey])
 
-(initialize-honey {:write-key "xxxxxxx"
-                   :dataset "my-ds-name"
-                   :sample-rate 1})
+(init-honeycomb {:write-key "xxxxxxx"
+                 :dataset "my-ds-name"
+                 :sample-rate 1})
 ```
 
 It is not Majas job to store the reference, your applications lifefycle needs to take care of this!
